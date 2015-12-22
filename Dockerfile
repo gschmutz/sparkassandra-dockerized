@@ -13,8 +13,8 @@ RUN /bin/echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java7-installer oracle-java7-set-default curl
 
 # download and install spark
-RUN curl -s http://d3kbcqa49mib13.cloudfront.net/spark-1.5.0-bin-hadoop2.4.tgz | tar -xz -C /usr/local/
-RUN cd /usr/local && ln -s spark-1.5.0-bin-hadoop2.4 spark
+RUN curl -s http://d3kbcqa49mib13.cloudfront.net/spark-1.4.1-bin-hadoop2.4.tgz | tar -xz -C /usr/local/
+RUN cd /usr/local && ln -s spark-1.4.1-bin-hadoop2.4 spark
 
 # install cassandra
 ENV CASSANDRA_VERSION 2.1.8
@@ -28,7 +28,7 @@ RUN apt-get update \
 COPY scripts/start-master.sh /start-master.sh
 COPY scripts/start-worker.sh /start-worker.sh
 COPY scripts/spark-shell.sh /spark-shell.sh
-COPY scripts/spark-cassandra-connector-assembly-1.3.0-RC1-SNAPSHOT.jar /spark-cassandra-connector-assembly-1.3.0-RC1-SNAPSHOT.jar
+COPY scripts/spark-cassandra-connector-assembly-1.4.1.jar /spark-cassandra-connector-assembly-1.4.1.jar
 COPY scripts/spark-defaults.conf /spark-defaults.conf
 
 # configure spark
